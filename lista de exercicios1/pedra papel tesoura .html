@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedra, Papel ou Tesoura</title>
+</head>
+<body>
+    <h1>Jogo: Pedra, Papel ou Tesoura</h1>
+    
+    <button onclick="jogar('Pedra')">Pedra</button>
+    <button onclick="jogar('Papel')">Papel</button>
+    <button onclick="jogar('Tesoura')">Tesoura</button>
+    
+    <p id="resultado"></p>
+    
+    <script>
+        function jogar(escolhaUsuario) {
+            const escolhas = ["Pedra", "Papel", "Tesoura"];
+            const escolhaComputador = escolhas[Math.floor(Math.random() * 3)]; // Escolha aleatória do computador
+
+            let resultado = "";
+
+            if (escolhaUsuario === escolhaComputador) {
+                resultado = `Empate! Ambos escolheram ${escolhaUsuario}.`;
+            } else if (
+                (escolhaUsuario === "Pedra" && escolhaComputador === "Tesoura") ||
+                (escolhaUsuario === "Papel" && escolhaComputador === "Pedra") ||
+                (escolhaUsuario === "Tesoura" && escolhaComputador === "Papel")
+            ) {
+                resultado = `Você ganhou! ${escolhaUsuario} vence ${escolhaComputador}.`;
+            } else {
+                resultado = `Você perdeu! ${escolhaComputador} vence ${escolhaUsuario}.`;
+            }
+
+            // Exibe o resultado na página
+            document.getElementById("resultado").textContent = 
+                `Você escolheu ${escolhaUsuario}. O computador escolheu ${escolhaComputador}. ${resultado}`;
+        }
+    </script>
+</body>
+</html>
