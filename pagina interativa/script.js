@@ -1,90 +1,120 @@
-// Contador de incremento/decremento
-let contador1 = 0;
-const contador2 = document.getElementById("contador2");
-const botao1 = document.getElementById("botao1");
-const botao2 = document.getElementById("botao2");
+class BotaoManager {
+    constructor() {
+        // Contador de incremento/decremento
+        this.contador1 = 0
+        this.contador2 = document.getElementById("contador2");
+        this.botao1 = document.getElementById("botao1");
+        this.botao2 = document.getElementById("botao2");
 
-botao1.onclick = function () {
-    contador1++;
-    contador2.innerText = contador1;
-};
+        // Campo de texto e contador de caracteres
+        this.entrada = document.getElementById("entrada");
+        this.contador = document.getElementById("contador");
 
-botao2.onclick = function () {
-    if (contador1 > 0) {
-        contador1--;
-        contador2.innerText = contador1;
-    } else {
-        alert("Não pode ser negativo!");
+        // Listas e botões de adição
+        this.itemInput = document.getElementById("itemInput");
+        this.listaOrdenada = document.getElementById("listaOrdenada");
+        this.listaNaoOrdenada = document.getElementById("listaNaoOrdenada");
+
+        // Botão de reset
+        this.resetButton = document.getElementById("reset");
+
+        // Inicializa os eventos
+        this.inicializarEventos();
     }
-};
 
-// Adicionar parágrafos ao pressionar "Enter"
-document.getElementById('entrada').addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        const texto = this.value.trim();
+    inicializarEventos() {
+        // Eventos do contador
+        this.botao1.addEventListener("click", () => this.incremento());
+        this.botao2.addEventListener("click", () => this.decremento());
 
-        if (texto !== "") {
-            const novoParagrafo = document.createElement('p');
-            novoParagrafo.textContent = texto;
-            document.getElementById('conteudo').appendChild(novoParagrafo);
+        // Evento de adicionar parágrafo
+        this.entrada.addEventListener("keydown", (event) => this.adicionarParagrafo(event));
 
-            // Limpa o campo de entrada
-            this.value = '';
+        // Evento de contador de caracteres
+        this.entrada.addEventListener("input", () => this.atualizarContador());
 
-            // Atualiza o contador de caracteres para 0
-            document.getElementById('contador').textContent = '0';
+        // Eventos de adicionar itens às listas
+        document.getElementById('adicionarOrdenada').addEventListener('click', () => this.adicionarItem('ordenada'));
+        document.getElementById('adicionarNaoOrdenada').addEventListener('click', () => this.adicionarItem('naoOrdenada'));
+
+        // Evento de reset
+        this.resetButton.addEventListener("click", () => this.resetarTudo());
+    }
+
+    incremento() {
+        this.contador1++;
+        this.contador2.innerText = this.contador1;
+    }
+
+    decremento() {
+        if (this.contador1 > 0) {
+            this.contador1--;
+            this.contador2.innerText = this.contador1;
+        } else {
+            alert("Não pode ser negativo!");
         }
     }
-});
 
-// Contador de caracteres (excluindo espaços)
-document.getElementById('entrada').addEventListener('input', function () {
-    const texto = this.value.replace(/\s/g, '');
-    document.getElementById('contador').textContent = texto.length;
-});
+    adicionarParagrafo(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const texto = this.entrada.value.trim();
 
-// Adicionar itens às listas
-function adicionarItem(tipoLista) {
-    const input = document.getElementById('itemInput');
-    const texto = input.value.trim();
+            if (texto !== "") {
+                const novoParagrafo = document.createElement('p');
+                novoParagrafo.textContent = texto;
+                document.getElementById('conteudo').appendChild(novoParagrafo);
 
-    if (texto === "") {
-        alert("Por favor, digite algo!");
-        return;
+                // Limpa o campo de entrada e atualiza o contador
+                this.entrada.value = '';
+                this.atualizarContador();
+            }
+        }
     }
 
-    const novoItem = document.createElement('li');
-    novoItem.textContent = texto;
-
-    if (tipoLista === 'ordenada') {
-        document.getElementById('listaOrdenada').appendChild(novoItem);
-    } else if (tipoLista === 'naoOrdenada') {
-        document.getElementById('listaNaoOrdenada').appendChild(novoItem);
+    atualizarContador() {
+        const texto = this.entrada.value.replace(/\s/g, '');
+        this.contador.textContent = texto.length;
     }
 
-    input.value = '';
+    adicionarItem(tipoLista) {
+        const texto = this.itemInput.value.trim();
+
+        if (texto === "") {
+            alert("Por favor, digite algo!");
+            return;
+        }
+
+        const novoItem = document.createElement('li');
+        novoItem.textContent = texto;
+
+        if (tipoLista === 'ordenada') {
+            this.listaOrdenada.appendChild(novoItem);
+        } else if (tipoLista === 'naoOrdenada') {
+            this.listaNaoOrdenada.appendChild(novoItem);
+        }
+
+        this.itemInput.value = '';
+    }
+
+    resetarTudo() {
+        // Limpa as listas
+        this.listaOrdenada.innerHTML = '';
+        this.listaNaoOrdenada.innerHTML = '';
+
+        // Limpa o campo de texto e o contador
+        this.itemInput.value = '';
+        this.contador.textContent = '0';
+
+        // Limpa o contador de incremento/decremento
+        this.contador1 = 0;
+        this.contador2.innerText = this.contador1;
+
+        // Limpa o conteúdo de parágrafos
+        document.getElementById('conteudo').innerHTML = '';
+        this.entrada.value = '';
+    }
 }
 
-// Event listeners para adicionar itens
-document.getElementById('adicionarOrdenada').addEventListener('click', () => adicionarItem('ordenada'));
-document.getElementById('adicionarNaoOrdenada').addEventListener('click', () => adicionarItem('naoOrdenada'));
-
-// Botão de reset
-document.getElementById('reset').addEventListener('click', function () {
-    // Limpa as listas
-    document.getElementById('listaOrdenada').innerHTML = '';
-    document.getElementById('listaNaoOrdenada').innerHTML = '';
-
-    // Limpa o campo de texto e o contador
-    document.getElementById('itemInput').value = '';
-    document.getElementById('contador').textContent = '0';
-
-    // Limpa o contador de incremento/decremento
-    contador1 = 0;
-    contador2.innerText = contador1;
-
-    // Limpa o conteúdo de parágrafos
-    document.getElementById('conteudo').innerHTML = '';
-    document.getElementById('entrada').value = '';
-});
+// Instancia a classe quando o script é carregado
+const botaoManager = new BotaoManager();

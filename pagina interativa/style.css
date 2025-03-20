@@ -3,9 +3,7 @@ body {
     margin: 20px;
 }
 
-h1, h2 {
-    color: #339;
-}
+ 
 
 input[type="text"] {
     padding: 8px;
