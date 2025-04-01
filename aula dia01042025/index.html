@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Dinâmica</title>
+    <style>
+        .marcado {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerenciador de Itens</h1>
+    <input type="text" id="itemInput" placeholder="Digite um item">
+    <button id="addButton">Adicionar</button>
+
+    <h2>Itens Adicionados</h2>
+    <table id="itemTable" border="1">
+        <thead>
+            <tr>
+                <th>Itens</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <h2>Selecionar Item</h2>
+    <select id="itemSelect">
+        <option value="">Selecione um item</option>
+    </select>
+    <button id="markButton">Marcar</button>
+    <button id="unmarkButton">Desmarcar</button>
+    <button id="removeButton">Remover</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
