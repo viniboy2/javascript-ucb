@@ -1,47 +1,45 @@
-// Preço de cada combustível
-const precogasolina = 5.79;
-const precoalcool = 4.29;
-const precodisel = 6.19;
-
-function atualizarvalor() {
-    let tipo = document.getElementById("combustivel").value; // Corrigido "Value" para "value"
-    let litros = parseFloat(document.getElementById("litros").value); // Corrigido "Value" para "value"
-    
-    let precoporlitro; // Declaração da variável
-
-    switch (tipo) {
-        case "gasolina":
-            precoporlitro = precogasolina;
-            break;
-        case "etanol":
-            precoporlitro = precoalcool;
-            break;
-        case "disel":
-            precoporlitro = precodisel;
-            break;
-        default:
-            document.getElementById("resultado").textContent = "Tipo de combustível inválido";
-            return; // Adiciona um retorno para não continuar o código
+// Preços dos combustíveis
+const PRECOS_COMBUSTIVEIS = {
+    gasolina: 5.79,
+    etanol: 4.29,
+    diesel: 6.19,
+  };
+  
+  function calcularValorAbastecimento() {
+    const tipoCombustivel = document.getElementById("combustivel").value;
+    const litros = parseFloat(document.getElementById("litros").value);
+    const resultadoElemento = document.getElementById("resultado");
+  
+    // Validação de entrada
+    if (!PRECOS_COMBUSTIVEIS[tipoCombustivel]) {
+      resultadoElemento.textContent = "Tipo de combustível inválido.";
+      return;
     }
-
-    // Chama a função para calcular o valor total
-    calcularvalorabastecimento(precoporlitro, litros);
-}
-
-function calcularvalorabastecimento(precocombustivel, litros) {
-   if(litros <= 0 || isNaN (litros) ){
-document.getElementById("resultado").textContent = "insira um valor positivo";
-return;
-   }
-    
-    let valortotal = precocombustivel * litros;
-    document.getElementById("resultado").textContent = `Valor total: R$ ${valortotal.toFixed(2)}`; // Exibe o valor formatado
-
-}
-function formatarmoeda(valor){
-    return"R$" +valor.toFixed(2);
-}
-// Adicionando os event listeners para atualizar o valor
-document.getElementById("litros").addEventListener("input", atualizarvalor); 
-document.getElementById("combustivel").addEventListener("change", atualizarvalor);
-
+  
+    if (isNaN(litros) || litros <= 0) {
+      resultadoElemento.textContent = "Insira um valor de litros válido.";
+      return;
+    }
+  
+    // Cálculo do valor total
+    const precoLitro = PRECOS_COMBUSTIVEIS[tipoCombustivel];
+    const valorTotal = precoLitro * litros;
+  
+    // Exibição do resultado formatado
+    resultadoElemento.textContent = `Valor total: ${formatarMoeda(valorTotal)}`;
+  }
+  
+  function formatarMoeda(valor) {
+    return valor.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
+  
+  // Adicionando os event listeners
+  document
+    .getElementById("litros")
+    .addEventListener("input", calcularValorAbastecimento);
+  document
+    .getElementById("combustivel")
+    .addEventListener("change", calcularValorAbastecimento);    
