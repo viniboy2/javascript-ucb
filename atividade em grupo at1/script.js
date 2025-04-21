@@ -13,17 +13,17 @@ const personagens = {
   naruto: new Personagem(
     "Naruto Uzumaki",
     "Você é energético, determinado e nunca desiste!",
-    "assets/naruto.png" // Caminho relativo
+    "imagens/naruto.png" // Caminho relativo
   ),
   sasuke: new Personagem(
     "Sasuke Uchiha", 
     "Você é estratégico, independente e focado em seus objetivos.",
-    "assets/sasuke.png"
+    "imagens/sasuke.png"
   ),
   sakura: new Personagem(
     "Sakura Haruno",
     "Você é inteligente, cuidadosa e tem grande força interior.",
-    "assets/sakura.png"
+    "imagens/sakura.png"
   )
 };
 
