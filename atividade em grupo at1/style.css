@@ -1,9 +1,8 @@
 /* Estilo geral com tema Naruto */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arial', sans-serif;
   text-align: center;
-  background: url('https://i.imgur.com/JYw0TvM.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background: url('./imagens/fundo-naruto.jpg') center/cover no-repeat fixed;
   margin: 0;
   padding: 20px;
   color: #333;
@@ -55,20 +54,21 @@ h1, h2, h3 {
   cursor: pointer;
   transition: all 0.3s;
   border: 2px solid #ddd;
-  font-size: 18px;
 }
 
 .opcao:hover {
   background-color: #ffecd2;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .opcao.selecionado {
   background-color: #ff9900;
   color: white;
   border-color: #e68a00;
   transform: scale(1.02);
 }
+
 button {
   padding: 12px 25px;
   background-color: #ff9900;
@@ -88,13 +88,10 @@ button:hover {
 }
 
 #imagempersonagem {
-  border: 3px solid #ff9900;
   border-radius: 10px;
+  border: 3px solid #d35400;
   margin: 20px 0;
-  transition: transform 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-#imagempersonagem:hover {
-  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: auto;
 }
