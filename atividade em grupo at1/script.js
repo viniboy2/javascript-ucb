@@ -35,7 +35,7 @@ const perguntas = [
     opcoes: [
       { texto: "Determinação inabalável", pontos: { naruto: 3, sasuke: 2, sakura: 1 } },
       { texto: "Habilidade estratégica", pontos: { naruto: 1, sasuke: 3, sakura: 2 } },
-      { texto: "Controle emocional", pontos: { naruto: 2, sasuke: 1, sakura: 3 } }
+      { texto: "empatia e bondade", pontos: { naruto: 2, sasuke: 1, sakura: 3 } }
     ]
   },
   // Pergunta 1
