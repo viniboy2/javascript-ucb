@@ -1,4 +1,4 @@
-
+/* Fonte padrão e plano de fundo */
 body {
   font-family: 'Arial', sans-serif;
   text-align: center;
@@ -9,6 +9,20 @@ body {
   min-height: 100vh;
 }
 
+/* Fonte personalizada */
+@font-face {
+  font-family: 'Naruto';
+  src: url('../fonts/njnaruto.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Aplicação da fonte personalizada */
+body, h1, h2, h3, button {
+  font-family: 'Naruto', 'Arial Black', sans-serif;
+}
+
+/* Camada branca translúcida sobre o fundo */
 body::before {
   content: '';
   position: fixed;
@@ -20,26 +34,32 @@ body::before {
   z-index: -1;
 }
 
+/* Estilização de títulos */
 h1, h2, h3 {
   color: #d35400;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
 }
 
+/* Classe para esconder elementos */
 .escondido {
   display: none;
 }
 
-#quiz, #resultado, #tela-inicial {
+/* Containers principais */
+#quiz,
+#resultado,
+#tela-inicial {
   margin: 30px auto;
   max-width: 600px;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border: 3px solid #d35400;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Área das opções */
 #opcoes {
   margin-top: 30px;
   display: flex;
@@ -47,13 +67,14 @@ h1, h2, h3 {
   gap: 15px;
 }
 
+/* Opções individuais */
 .opcao {
   background-color: #f8f8f8;
   padding: 15px;
   border-radius: 8px;
+  border: 2px solid #ddd;
   cursor: pointer;
   transition: all 0.3s;
-  border: 2px solid #ddd;
 }
 
 .opcao:hover {
@@ -64,15 +85,16 @@ h1, h2, h3 {
 
 .opcao.selecionado {
   background-color: #ff9900;
-  color: white;
+  color: #fff;
   border-color: #e68a00;
   transform: scale(1.02);
 }
 
+/* Botões */
 button {
   padding: 12px 25px;
   background-color: #ff9900;
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -87,11 +109,12 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* Imagem do personagem */
 #imagempersonagem {
+  width: 200px;
+  height: auto;
   border-radius: 10px;
   border: 3px solid #d35400;
   margin: 20px 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 200px;
-  height: auto;
 }
