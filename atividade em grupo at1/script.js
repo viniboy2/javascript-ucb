@@ -29,49 +29,84 @@ const personagens = {
 
 // Estrutura das perguntas e pontuações
 const perguntas = [
-  // Pergunta 0
   {
-    texto: "Qual dessas virtudes ninja você valoriza mais?",
+    texto: 'Qual dessas qualidades você mais valoriza?',
     opcoes: [
-      { texto: "Determinação inabalável", pontos: { naruto: 3, sasuke: 2, sakura: 1 } },
-      { texto: "Habilidade estratégica", pontos: { naruto: 1, sasuke: 3, sakura: 2 } },
-      { texto: "empatia e bondade", pontos: { naruto: 2, sasuke: 1, sakura: 3 } }
+      { texto: 'Determinação', personagem: 'Naruto' },
+      { texto: 'Frieza e inteligência', personagem: 'Sasuke' },
+      { texto: 'Compaixão e empatia', personagem: 'Sakura' }
     ]
   },
-  // Pergunta 1
   {
-    texto: "Qual cenário de missão você prefere?",
+    texto: 'Em uma equipe, você é mais:',
     opcoes: [
-      { texto: "Batalha direta contra inimigos poderosos", pontos: { naruto: 3, sasuke: 2, sakura: 1 } },
-      { texto: "Missão de infiltração e coleta de informações", pontos: { naruto: 1, sasuke: 3, sakura: 2 } },
-      { texto: "Missão de resgate e proteção", pontos: { naruto: 2, sasuke: 1, sakura: 3 } }
+      { texto: 'O motivador', personagem: 'Naruto' },
+      { texto: 'O estrategista', personagem: 'Sasuke' },
+      { texto: 'O apoio confiável', personagem: 'Sakura' }
     ]
   },
-  // Pergunta 2
   {
-    texto: "Qual é sua relação com seu time?",
+    texto: 'Qual desses jutsus você gostaria de dominar?',
     opcoes: [
-      { texto: "Sou o coração que mantém todos unidos", pontos: { naruto: 3, sasuke: 1, sakura: 2 } },
-      { texto: "Prefiro trabalhar sozinho na maioria das vezes", pontos: { naruto: 1, sasuke: 3, sakura: 1 } },
-      { texto: "Sou o apoio que mantém o time funcionando", pontos: { naruto: 2, sasuke: 1, sakura: 3 } }
+      { texto: 'Rasengan', personagem: 'Naruto' },
+      { texto: 'Chidori', personagem: 'Sasuke' },
+      { texto: 'Super força', personagem: 'Sakura' }
     ]
   },
-  // Pergunta 3
   {
-    texto: "Como você lida com a derrota?",
+    texto: 'O que mais te motiva a lutar?',
     opcoes: [
-      { texto: "Treino ainda mais forte para a revanche", pontos: { naruto: 3, sasuke: 2, sakura: 1 } },
-      { texto: "Analiso meus erros para melhorar", pontos: { naruto: 1, sasuke: 3, sakura: 2 } },
-      { texto: "Busco apoio dos meus amigos", pontos: { naruto: 2, sasuke: 1, sakura: 3 } }
+      { texto: 'Proteger os amigos', personagem: 'Naruto' },
+      { texto: 'Buscar poder e vingança', personagem: 'Sasuke' },
+      { texto: 'Ajudar quem precisa', personagem: 'Sakura' }
     ]
   },
-  // Pergunta 4
   {
-    texto: "Qual desses jutsus combina mais com você?",
+    texto: 'Qual dessas frases combina mais com você?',
     opcoes: [
-      { texto: "Rasengan - esfera de energia poderosa", pontos: { naruto: 3, sasuke: 1, sakura: 2 } },
-      { texto: "Chidori - ataque rápido e preciso", pontos: { naruto: 1, sasuke: 3, sakura: 2 } },
-      { texto: "Byakugou no Jutsu - cura e força interior", pontos: { naruto: 2, sasuke: 1, sakura: 3 } }
+      { texto: 'Nunca volto atrás com minha palavra!', personagem: 'Naruto' },
+      { texto: 'As pessoas vivem presas a ilusões.', personagem: 'Sasuke' },
+      { texto: 'Eu também quero me tornar mais forte!', personagem: 'Sakura' }
+    ]
+  },
+  {
+    texto: 'Como você lida com desafios?',
+    opcoes: [
+      { texto: 'Com coragem e fé em mim mesmo', personagem: 'Naruto' },
+      { texto: 'Frio e calculista', personagem: 'Sasuke' },
+      { texto: 'Com determinação e trabalho duro', personagem: 'Sakura' }
+    ]
+  },
+  {
+    texto: 'O que você faria por um amigo em perigo?',
+    opcoes: [
+      { texto: 'Arriscaria tudo por ele', personagem: 'Naruto' },
+      { texto: 'Avalio os riscos antes de agir', personagem: 'Sasuke' },
+      { texto: 'Ajudo da melhor forma possível', personagem: 'Sakura' }
+    ]
+  },
+  {
+    texto: 'Escolha uma cor que representa você:',
+    opcoes: [
+      { texto: 'Laranja vibrante', personagem: 'Naruto' },
+      { texto: 'Azul escuro', personagem: 'Sasuke' },
+      { texto: 'Rosa suave', personagem: 'Sakura' }
+    ]
+  },
+  {
+    texto: 'Qual tipo de treino você prefere?',
+    opcoes: [
+      { texto: 'Resistência e chakra', personagem: 'Naruto' },
+      { texto: 'Técnicas avançadas', personagem: 'Sasuke' },
+      { texto: 'Treinamento físico e emocional', personagem: 'Sakura' }
+    ]
+  },
+  {
+    texto: 'Como você lida com a derrota?',
+    opcoes: [
+      { texto: 'Levanto e tento de novo!', personagem: 'Naruto' },
+      { texto: 'Aceito e sigo meu caminho', personagem: 'Sasuke' },
+      { texto: 'Aprendo com meus erros', personagem: 'Sakura' }
     ]
   }
 ];
