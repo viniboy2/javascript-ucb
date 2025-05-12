@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiros passos com o DOM</title>
+    <style>
+        body{
+            background-color: blue;
+         color: antiquewhite;
+        font: normal 18pt Arial;        }
+    </style>
+</head>
+<body>
+    <H1>aprendendo utilizar o  <strong>DOM </strong> em js </H1>
+    <p>aqui vai o resultado </p>
+    <p>tem de ter 2 paragrafor para o codígo dar certo </p>
+    <div id = "msg">clique em mim</div>
+    <! -- vamos aprender a acessar os documentos de 4 modos marca (tag name)---por id --- por nome --- por classe --- 
+    por seletor(o mais moderno)-->
+    </body>
+<script>
+    let corpo = document.body
+   
+   /* let p1 = window.document.getElementsByTagName("p")[0]
+     window.document.write(p1.innerText)
+    p1.style.color = 'yellow'
+     corpo.style.color ="pink"
+      alert(p1.innerHTML);
+     segunda tecnica  por id 
+     let d = document.getElementById("msg")
+     d.style.background = "green"
+    d.innerText = "estou aquardando"
+    var d = document.getElementsByName("msg")[0]
+    d.innerText =   "Ola mundo "
+    da para fazer por classe */
+    //forma nova querySelector /all/()
+    // cada class e representado por um caracter  # div class = . 
+    //let d = window.document.querySelector("div#msg")
+    //d.style.color ="black"
+
+</script>
+</html>

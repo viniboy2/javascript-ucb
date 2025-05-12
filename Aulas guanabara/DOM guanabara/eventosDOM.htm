@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+div#area{
+    font: normal 20pt Arial;
+    background-color: rgb(42, 139, 42);
+    color: white ;
+    width: 200px;
+    height:200px;
+    line-height: 150pt;
+    text-align:center  ;
+}
+    </style>
+</head>
+<body>
+    <div id ="area">
+        interaja
+    </div>
+    
+</body>
+<script>
+     window.document.write(window.document.characterSet)
+     area.addEventListener ("click",clicar )
+     area.addEventListener ("mouseenter",entrou )
+     area.addEventListener ("mouseout",saiu )
+        function clicar (){
+            area.innerText = "clicou"
+            area.style.background = "blue"
+        }
+        function entrou (){    
+            area.innerText = "entrou"
+            area.style.background = "red"
+        }
+        function saiu (){
+            let area = window.document.getElementById('area')
+            area.innerText = "saiu"
+            area.style.background = "green"
+    }
+  
+</script>
