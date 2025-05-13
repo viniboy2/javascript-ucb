@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> pagina teste </title>
+    <style>
+        body{
+        background-color: black;
+        color: whitesmoke;
+        font: normal 18pt  sans-serif;
+        }
+        div#div1 {
+    background-color:grey   ;
+    color:white;
+        font: normal 22pt arial;
+    width: 200pt;
+    height: 150pt;
+    text-align: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+    margin: 0 auto;   
+        }
+        span#contador{
+            
+        }
+    </style>
+</head>
+<body>
+    <div id = div1> olá amigos </div>
+    <span id="contador">0</span>
+
+
+</body>
+<script>
+    let contador_de_clique = 0;
+     const div = document.querySelector("#div1");// aqui é const pois não pretendo mudar essa variavel 
+     div.addEventListener("click",clicar);
+     function clicar(){
+        div.innerText = "apertou";
+        div.style.backgrund = red;
+        contador_de_clique ++;
+     }
+</script>
+</html>
