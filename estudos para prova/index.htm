@@ -3,10 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudos para prova</title>
+    <title>Qual Personagem de Naruto Você É?</title>
+    <style>
+        body {
+            background:url('./imagens/imagem_de_fundo.png') center/cover no-repeat fixed;
+            font-family: 'Arial', sans-serif;
+      text-align: center;
+     margin: 0;
+      padding: 20px;
+    color: #333;
+      min-height: 100vh;
+        }
+        .bt {
+            size:500pt;
+            border: none;
+            border-radius: 10%;
+            background-color: black;
+            color: blue;
+        }
+    div#div1{
+        background-color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+        margin: auto;
+        max-width: 170pt;
+        padding-bottom: 150px;
+    }
+    div#divperguntas
+    </style>
 </head>
-<body>
-    
-    <script src = "script.js"></script>
+<body> 
+    <div id = div1>   resposnda as perguntas abaixo</div>
+    <button id="bt_1" class="bt">opção1</button>
+    <button id="bt_2" class="bt">opção2</button>
+    <button id="bt_3" class="bt">opção3</button>
 </body>
+<script>
+const botoes = document.querySelectorAll(".bt");
+
+botoes.forEach(botao => {
+    botao.onmouseenter = () => {
+        botao.style.backgroundColor = "blue";
+        botao.style.color = "white";
+    };
+    botao.onmouseout = () => {
+        botao.style.backgroundColor = "black";
+        botao.style.color = "blue";
+    };
+});
+</script>
+
 </html>
