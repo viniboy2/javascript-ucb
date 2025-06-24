@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="max-width: 600px;">
+        <h1>Minhas Tarefas</h1>
+        
+        <form id="add-task-form">
+            <input type="text" id="title" placeholder="Título da tarefa" required>
+            <input type="text" id="description" placeholder="Descrição (opcional)">
+            <button type="submit">Adicionar Tarefa</button>
+        </form>
+        
+        <ul id="task-list">
+            </ul>
+        
+        <button id="logout-btn" style="background-color: #6c757d; margin-top: 1rem;">Sair</button>
+    </div>
+
+    <script>
+        const taskList = document.getElementById('task-list');
+        const addTaskForm = document.getElementById('add-task-form');
+
+        // Função para buscar e renderizar as tarefas do usuário
+        const fetchTasks = async () => {
+            try {
+                const response = await fetch('/tarefas');
+                
+                if (response.status === 401) {
+                    alert('Sessão expirada. Por favor, faça o login novamente.');
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                const tasks = await response.json();
+                taskList.innerHTML = ''; // Limpa a lista antes de adicionar os novos itens
+
+                tasks.forEach(task => {
+                    const li = document.createElement('li');
+                    li.dataset.id = task.id;
+                    li.className = task.completed ? 'completed' : '';
+
+                    li.innerHTML = `
+                        <span>${task.title}</span>
+                        <div>
+                            <input type="checkbox" onchange="toggleTask(${task.id}, this.checked)" ${task.completed ? 'checked' : ''}>
+                            <button class="delete-btn" onclick="deleteTask(${task.id})">Excluir</button>
+                        </div>
+                    `;
+                    taskList.appendChild(li);
+                });
+            } catch (error) {
+                console.error('Erro ao buscar tarefas:', error);
+            }
+        };
+
+        // Adicionar uma nova tarefa
+        addTaskForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+
+            await fetch('/tarefas', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, description })
+            });
+
+            addTaskForm.reset();
+            fetchTasks();
+        });
+
+        // Marcar tarefa como concluída/não concluída
+        const toggleTask = async (id, completed) => {
+            await fetch(`/tarefas/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ completed })
+            });
+            fetchTasks();
+        };
+
+        // Deletar uma tarefa
+        const deleteTask = async (id) => {
+            if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
+                await fetch(`/tarefas/${id}`, { method: 'DELETE' });
+                fetchTasks();
+            }
+        };
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            await fetch('/auth/logout', { method: 'POST' });
+            alert('Você saiu com sucesso.');
+            window.location.href = 'login.html';
+        });
+
+        // Carrega as tarefas quando a página é aberta
+        window.onload = fetchTasks;
+    </script>
+</body>
+</html>
